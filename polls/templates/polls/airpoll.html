@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<script src="http://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script type="text/javascript">
+
+window.onload = function () {
+	var chart = new CanvasJS.Chart("chartContainer", {
+		theme: "theme2",//theme1
+		title:{
+			text: "AIR POLLUTION VALUES"              
+		},
+		animationEnabled: false,   // change to true
+		data: [              
+		{
+			// Change type to "bar", "area", "spline", "pie",etc.
+			type: "column",
+			dataPoints: [
+				{ label: "january",  y: 10  },
+				{ label: "february", y: 15  },
+				{ label: "march", y: 25  },
+				{ label: "april",  y: 30  },
+				{ label: "may",  y: 28  }
+              { label: "june",  y: 8  },
+              { label: "july",  y: 32 },
+              { label: "august",  y: 45  }
+              
+			]
+		}
+		]
+	});
+	chart.render();
+}
+</script>
+</head>
+<body>
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+</body>
+</html>

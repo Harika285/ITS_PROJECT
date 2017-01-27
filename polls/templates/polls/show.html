@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<style>
+table{
+border-collapse: collapse;
+background-color:blue;
+width:800px;
+}
+table,th,td {
+border: 1px solid black;
+}
+</style>
+<body>
+<center>
+<h1>Water Pollution Levels</h1></center>
+<center>
+<table>
+<tr>
+<th>Date & Time</th>
+<th>water Pollution levels</th>
+</tr>
+{% if latest_question_list %}
+
+
+        {% for question in latest_question_list %}
+         <tr>
+	<td>
+		{{question.pub_date}}
+	</td>
+        <td>
+                {{ question.question_text }}
+         </td>
+        </tr>
+         {% endfor %}
+
+    </table>
+</center>
+</body>
+</html>
+{% endif %}

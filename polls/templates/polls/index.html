@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <!-- Theme Made By www.w3schools.com - No Copyright -->
+  <title>Bootstrap Theme Simply Me</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+a{
+font-size:20px;
+}
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s
+}
+
+.sidenav a:hover, .offcanvas a:focus{
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+  .bg-1 {
+      background-color: #1abc9c;
+      color: #ffffff;
+      height:600px;
+  }
+  .bg-2 {
+      background-color: #474e5d;
+      color: #ffffff;
+      height:200px;
+  }
+  .bg-3 {
+      background-color: #ffffff;
+      color: #555555;
+ I }
+  .bg-4{
+height=50px;
+}
+  .container-fluid {
+      padding-top: 50px;
+      padding-bottom: 70px;
+  }
+ h3{
+font-size:300%;
+}
+
+  </style>
+</head>
+<body>
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="show.html">Water pollution</a>
+  <a href="#">Air Pollution</a>
+  <a href="#">Maps</a>
+  
+</div>
+
+<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; MENU</span>
+
+<script>
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}
+</script>
+<nav class="navbar navbar-inverse height=50px">
+<!--  <div class="container-fluid">-->
+    <div class="navbar-header">
+
+    </div>
+<!--<form method="get" action="project2.html">
+    <button type="submit" align:right>Continue</button>
+</form>-->
+    <ul class="nav navbar-nav navbar-right">
+
+    </ul>
+  </div>
+</nav>
+<div class="container-fluid bg-1 text-center">
+  <h3><b>AIR-WATER POLLUTION MEASUREMENT</b></h3>
+  <script language="JavaScript">
+
+var i = 0;
+
+var path = new Array();
+path[0] = "http://orissadiary.com/shashwat/images/allnewsimage/15708.jpg";
+
+path[1] = "http://www.iuemag.com/february2014/di/images/iu-emagazine-doctor-surgeon-profession-rajasthan-private-hospital-bikaner-sherera-clinic-lifestyle-villages-medical-store-malnutrition-solutions.jpg";
+
+path[2] = "http://www.thaiworldview.com/society/jpg/img028.jpg";
+
+path[3] = "http://indianexpress.com/about/maharashtra-water-crisis/";
+
+//<!--path[4]="http://mrabakery.com/dmra/demo/images/rest_banner/images/res220.png";-->
+
+
+
+
+
+function swapImage()
+
+{
+
+   document.slide.src = path[i];
+
+   if(i < path.length - 1) i++; else i = 0;
+
+   setTimeout("swapImage()",1500);
+
+}
+
+window.onload=swapImage;
+
+</script>
+<img height= "400" name="slide" src="image_1.gif" width="600" height= "250" class= "img-circle"/> 
+<!--<img src="http://www.bcmtouring.com/forums/attachments/img_0338-jpg.82005/" class="img-circle" alt="Bird" width="350" height="350">-->
+</div>
+
+<div class="container-fluid bg-2 text-center">
+<!--  <h3>What Am I?</h3>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+</div>
+
+
+</body>
+</html>
