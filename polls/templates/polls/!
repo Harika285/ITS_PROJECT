@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<style>
+table{
+border-collapse: collapse;
+}
+table,th,td {
+border: 1px solid black;
+}
+</style>
+<body>
+<table>
+{% if latest_question_list %}
+
+
+        {% for question in latest_question_list %}
+         <tr>
+        <td>
+                {{ question.question_text }}
+         </td>
+        </tr>
+         {% endfor %}
+
+    </table>
+</body>
+</html>
+{% endif %}
