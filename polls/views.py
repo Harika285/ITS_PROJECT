@@ -1,17 +1,59 @@
 from django.shortcuts import render
 from django.template import loader
-# Create your views here.
 from django.http import HttpResponse
-<<<<<<< HEAD
 from django.http import HttpResponseRedirect
 from .models import Question
 from django.shortcuts import render_to_response
-#import account.views
-=======
 from .models import Question
 from django.shortcuts import render_to_response
+from polls.forms import *
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
+from django.views.decorators.csrf import csrf_protect
+from django.shortcuts import render_to_response
+from django.http import HttpResponseRedirect
+from django.template import RequestContext
+ 
+@csrf_protect
+def register(request):
+    if request.method == 'POST':
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            user = User.objects.create_user(
+            username=form.cleaned_data['username'],
+            password=form.cleaned_data['password1'],
+            email=form.cleaned_data['email']
+            )
+            return HttpResponseRedirect('/polls/home')
+    else:
+        form = RegistrationForm()
+    variables = RequestContext(request, {
+    'form': form
+    })
+ 
+    return render_to_response(
+    'registration/register.html',
+    variables,
+    )
+ 
+def register_success(request):
+    return render_to_response('polls/home', )
+ 
+def logout_page(request):
+    logout(request)
+    template = loader.get_template('polls/index.html')
 
->>>>>>> 06383a7ea820e0cbefd0cb199e365aa1ead6f5b9
+    # ... your python code/script
+   
+    return HttpResponse(template.render(request)) 
+    #return HttpResponseRedirect('{% url 'polls.views.index'  %}')
+ 
+@login_required
+def home(request):
+    return render_to_response(
+    'home.html',
+    { 'user': request.user }
+    )
 
 def index(request):
     latest_question_list = Question.objects.order_by('-pub_date')
@@ -25,24 +67,31 @@ def index(request):
 
 def show(request):
     latest_question_list = Question.objects.order_by('-pub_date')[:5]
-
-<<<<<<< HEAD
     template = loader.get_template('polls/show.html')
-=======
+
     template = loader.get_template('polls/index.html')
->>>>>>> 06383a7ea820e0cbefd0cb199e365aa1ead6f5b9
     context = {
          'latest_question_list': latest_question_list,
         }
 
     return HttpRespnse(template.render(context,request))
-<<<<<<< HEAD
+
+@login_required(login_url='django.contrib.auth.views.login')
 def show1(request):
     template = loader.get_template('polls/chart-chartjs.html')
 
     # ... your python code/script
    
-    return HttpResponse(template.render(request))  
+    return HttpResponse(template.render(request)) 
+def page(request):
+    template = loader.get_template('polls/home.html')
+
+    # ... your python code/script
+   
+    return HttpResponse(template.render(request)) 
+
+
+@login_required(login_url='django.contrib.auth.views.login') 
 def show2(request):
     template = loader.get_template('polls/basic_table.html')
 
@@ -57,11 +106,6 @@ def show2(request):
       #  }
     return HttpResponse(template.render(request))
 
-#    return HttpRespnse(template.render(context,request))
-=======
->>>>>>> 06383a7ea820e0cbefd0cb199e365aa1ead6f5b9
-
-
 def detail(request, question_id):
     return HttpResponse("You're looking at question %s." % question_id)
 
@@ -72,19 +116,10 @@ def results(request, question_id):
 def vote(request, question_id):
     return HttpResponse("You're voting on question %s." % question_id)
 
-<<<<<<< HEAD
-#class SignupView(account.views.SignupView):
 
- #   def after_signup(self, form):
-  #      self.update_profile(form)
-   #     super(SignupView, self).after_signup(form)
 
-    #def update_profile(self, form):
-     #   profile = self.created_user.profile  # replace with your reverse one-to-one profile attribute
-      #  profile.some_attr = "some value"
-       # profile.save()
-=======
->>>>>>> 06383a7ea820e0cbefd0cb199e365aa1ead6f5b9
+
+
 
 
       

@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
-<<<<<<< HEAD
+
 #from geoposition.fields import GeopositionField
 
 
@@ -8,10 +8,9 @@ from django.utils.encoding import python_2_unicode_compatible
 #class PointOfInterest(models.Model):
  #   name = models.CharField(max_length=100)
   #  position = GeopositionField()
-=======
 
 
->>>>>>> 06383a7ea820e0cbefd0cb199e365aa1ead6f5b9
+
 class Question(models.Model):
     question_text = models.CharField(max_length=200)
     pub_date = models.DateTimeField('date published')

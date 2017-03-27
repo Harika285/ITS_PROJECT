@@ -11,10 +11,12 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
+import django.contrib.auth
+django.contrib.auth.LOGIN_URL = '/'
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-<<<<<<< HEAD
+
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
@@ -25,9 +27,7 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     # django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
-=======
 
->>>>>>> 06383a7ea820e0cbefd0cb199e365aa1ead6f5b9
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
@@ -44,38 +44,19 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-<<<<<<< HEAD
     #'django.contrib.staticfiles',
     'polls.apps.PollsConfig',
     #'django.contrib.staticfiles',
     'django.contrib.sites',
-=======
-
-    'polls.apps.PollsConfig',
->>>>>>> 06383a7ea820e0cbefd0cb199e365aa1ead6f5b9
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-<<<<<<< HEAD
     'account',
-    'pinax_theme_bootstrap',
-    'bootstrapform',
-    'olwidget',
-    
-    
-    
 ]
 SITE_ID=1
-=======
-    'django_tables2',
-
-    'chartit',
-    
-]
->>>>>>> 06383a7ea820e0cbefd0cb199e365aa1ead6f5b9
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
@@ -85,11 +66,9 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-<<<<<<< HEAD
     "account.middleware.LocaleMiddleware",
     "account.middleware.TimezoneMiddleware",
-=======
->>>>>>> 06383a7ea820e0cbefd0cb199e365aa1ead6f5b9
+
 ]
 
 ROOT_URLCONF = 'myproject.urls'
@@ -105,12 +84,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-<<<<<<< HEAD
-		"account.context_processors.account",
                 'django.core.context_processors.request',
-		'pinax_theme_bootstrap.context_processors.theme'
-=======
->>>>>>> 06383a7ea820e0cbefd0cb199e365aa1ead6f5b9
+		
             ],
         },
     },
@@ -125,7 +100,12 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+	'NAME': os.path.join(BASE_DIR, 'loginapp.sqlite'),
+	'USER': '',
+        'PASSWORD': '',
+        'HOST': '',   # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+        'PORT': '',   # Set to empty string for default.
     }
 }
 
