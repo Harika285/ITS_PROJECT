@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
-
+from django import forms
 
 #from geoposition.fields import GeopositionField
 
@@ -32,5 +32,12 @@ class MonthlyWeatherByCity(models.Model):
     boston_temp = models.DecimalField(max_digits=5, decimal_places=1)
     houston_temp = models.DecimalField(max_digits=5, decimal_places=1)
 
-
+class EmailForm(forms.Form):
+      firstname = forms.CharField(max_length=255)
+      lastname = forms.CharField(max_length=255)
+      email = forms.EmailField()
+      subject = forms.CharField(max_length=255)
+      botcheck = forms.CharField(max_length=5)
+      message = forms.CharField()
+  
 

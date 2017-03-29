@@ -7,13 +7,46 @@ from django.shortcuts import render_to_response
 from .models import Question
 from django.shortcuts import render_to_response
 from polls.forms import *
+
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.views.decorators.csrf import csrf_protect
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect
 from django.template import RequestContext
- 
+from django.core.mail import EmailMessage
+from django.shortcuts import redirect
+from django.template import Context
+from django.template.loader import get_template
+from django.core.mail import send_mail, BadHeaderError
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render, redirect
+from polls.forms import ContactForm
+
+
+
+@login_required(login_url='django.contrib.auth.views.login')
+def email(request):
+    if request.method == 'GET':
+        form = ContactForm()
+    else:
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            #subject = form.cleaned_data['subject']
+            To_email = form.cleaned_data['To_email']
+            message = form.cleaned_data['message']
+            try:
+                send_mail('Pollution Levels', message, ['haarika28sj@gmail.com'],[To_email])
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return redirect('thanks')
+    return render(request, "polls/email.html", {'form': form})
+
+def thanks(request):
+   return HttpResponseRedirect('/polls/')
+
+
+
 @csrf_protect
 def register(request):
     if request.method == 'POST':
@@ -24,7 +57,7 @@ def register(request):
             password=form.cleaned_data['password1'],
             email=form.cleaned_data['email']
             )
-            return HttpResponseRedirect('/polls/home')
+            return HttpResponseRedirect('/polls/')
     else:
         form = RegistrationForm()
     variables = RequestContext(request, {
@@ -37,7 +70,7 @@ def register(request):
     )
  
 def register_success(request):
-    return render_to_response('polls/home', )
+    return render_to_response('/polls/index', )
  
 def logout_page(request):
     logout(request)
@@ -83,8 +116,15 @@ def show1(request):
     # ... your python code/script
    
     return HttpResponse(template.render(request)) 
-def page(request):
-    template = loader.get_template('polls/home.html')
+def notifications(request):
+    template = loader.get_template('polls/notifications.html')
+
+    # ... your python code/script
+   
+    return HttpResponse(template.render(request)) 
+
+def script(request):
+    template = loader.get_template('polls/script.html')
 
     # ... your python code/script
    

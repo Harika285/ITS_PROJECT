@@ -1,22 +1,51 @@
 {% extends "base.html" %}
-{% block title %}Login{% endblock %}
-{% block head %}Login{% endblock %}
+
+
 {% block content %}
+<style>
+a.button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    font-style:italic;
+    text-decoration: none;
+    color: black;
+}
+input[type=submit] {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    font-style:italic;
+    text-decoration: none;
+    color: black;
+    font-size:16px;
+}
+</style>
     {% if form.errors %}
         <p>Your username and password didn't match. Please try again.</p>
+
     {% endif %}
     <form method="post" action=".">{% csrf_token %}
+	<center>
+        <h style="color:#127877;font-size: 300%;"><i>Login<i></h>
+        <br>
+	<br>
+        <br>
+        <br>
         <table border="0">
-
-	     <!--<tr><th><label for="id_username">Username:</label></th><td>{{ form.Type }}</td></tr>-->
             <tr><th><label for="id_username">Username:</label></th><td>{{ form.username }}</td></tr>
             <tr><th><label for="id_password">Password:</label></th><td>{{ form.password }}</td></tr>
-         </table>
-        
-        <input type="submit" value="Login" />
-     {% if form.Type == CITIZEN %}  
-        <input type="hidden" name="next" value="{% url 'polls.views.page'  %}" />
-      {% endif %}
+        </table>
+        <br>
+        <input type="submit" value="Login" class=button />
+        <input type="hidden" name="next" value="{% url 'polls.views.index'  %}" />
+	
     </form>
-    <a href="{% url 'polls.views.register'  %}">Register</a>
+    <br>
+    <br>
+    <a href="/polls/register" class="button">New User? Sign-Up</a>
+</center>
 {% endblock %}
+
+
+

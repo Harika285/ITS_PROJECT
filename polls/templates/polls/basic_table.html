@@ -9,7 +9,21 @@
 
     <style type="text/css">
       .feed-row { transition: background-color 2s ease; }
-    </style>
+   
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:hover{background-color:#35edeb}
+</style>
+    
 
     <script type="text/javascript">
 
@@ -326,39 +340,40 @@
     <div class="container">
 
         <div class="page-header">
-            <h1>AIR AND WATER POLLUTION ANALYZER</h1>
+           <center> <h style="font-size: 300%;"><i>SENSOR VALUES</i></h></center>
         </div>
 
-       <!-- <div class="panel panel-default">
+        <div class="panel panel-default">
             <div class="panel-heading">
                 <div class="row">
-                    <div class="col-lg-2">
+                   <!-- <div class="col-lg-2">
                         <div class="input-group">
                             <span class="input-group-addon">Channel</span>
                             <input type="text" class="form-control" id="channel">
                         </div>
-                    </div>
-                    <div class="col-lg-4">
+                    </div>-->
+
+                    <!--<div class="col-lg-4">
                         <div class="input-group">
                             <span class="input-group-addon">Read API Key</span>
                             <input type="text" class="form-control" id="read_api_key">
                         </div>
-                    </div>
+                    </div>-->
                     <div class="col-lg-6">
                         <button type="button" class="btn btn-default" onClick="includeLocation(this)" id="location">
                             <span class="glyphicon glyphicon-unchecked"></span> Location
                         </button>
 
-                        <button type="button" class="btn btn-default" onClick="includeStatus(this)" id="status">
+                        <!--<button type="button" class="btn btn-default" onClick="includeStatus(this)" id="status">
                             <span class="glyphicon glyphicon-unchecked"></span> Status
-                        </button>
+                        </button>-->
 
                         <button type="button" class="btn btn-primary" onClick="playPause(this)" id="start">
                             <span class="glyphicon glyphicon-play"></span>
                         </button>
                     </div>
                 </div>
-            </div>-->
+            </div>
 
             <div class="panel-body">
                 <h1 id="header"></h1>

@@ -1,0 +1,30 @@
+<style>
+button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    font-style:italic;
+    text-decoration: none;
+    color: black;
+}
+</style>
+
+<center>
+<h style="color:#127877;font-size: 300%;"><i>Send Notifications To Industries</i></h>
+<br>
+
+<br>
+<br>
+<br>
+<br>
+<form method="post">
+    {% csrf_token %}
+
+<table border="0">
+   {{ form.as_table }}
+</table>
+    <div class="form-actions">
+      <button type="submit">Send</button>
+    </div>
+</form>
+</center>

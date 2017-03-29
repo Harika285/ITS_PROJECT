@@ -35,6 +35,23 @@
 	<link href="{%static "css/xcharts.min.css" %}" rel=" stylesheet">	
 	<link href="{%static "css/jquery-ui-1.10.4.min.css" %}" rel="stylesheet">
   </head>
+  <style>
+
+.button {
+    background-color: white; /* Green */
+    border: none;
+    color: black;
+    padding: 10px 22px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 2px 2px;
+    cursor: pointer;
+}
+
+.button1 {border-radius: 4px;}
+</style>
 
   <body>
   <!-- container section start -->
@@ -47,20 +64,30 @@
             </div>
 
             <!--logo start-->
-            <a href="index.html" class="logo">Air and Water <span class="lite">Pollution Analyser</span></a>
+            <a href="index.html" class="logo"><i>Air and Water </i><span class="lite"><i>Pollution Analyser</i></span></a>
             <!--logo end-->
            <div class="top-nav notification-row">                
                 <!-- notificatoin dropdown start-->
+		{% if user.is_authenticated %}
+			<ul class="nav pull-right top-menu">
+			<li>
+			<a href="{% url 'polls.views.logout_page'  %}">
+    			<button  class="button button1"><i>Logout</i></button>
+			</a>
+			</li>   
+	       		 </ul> 
+		{% else %} 
                 <ul class="nav pull-right top-menu">
 			<li>
 			<a href="{% url 'polls.views.register'  %}">
-    			<button>Sign Up</button>
-			</a>
-			
+    			<button  class="button button1"><i>Sign up</i></button>
+			</a>			
                     	</li>
 			<li><a href="{% url 'django.contrib.auth.views.login'  %}">
-    			<button>Login</button>
+    			<button  class="button button1"><i>Login</i></button>
 			</a></li>
+		</ul>
+		{% endif %}
                     
                 <!-- notificatoin dropdown end-->
             </div>
@@ -83,7 +110,7 @@
                   <li>                     
                       <a class="" href="{% url 'polls.views.show1'  %}">
                           <i class="icon_piechart"></i>
-                          <span>CHARTS</span>
+                          <span><i>Charts<i></span>
                           
                       </a>
                                          
@@ -92,23 +119,23 @@
                   <li class="sub-menu">
                       <a href="javascript:;" class="">
                           <i class="icon_table"></i>
-                          <span>SENSOR DATA</span>
+                          <span><i>Sensor Data<i></span>
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
                       <ul class="sub">
-                          <li><a class="" href="{% url 'polls.views.show2'  %}">WATER POLLUTION</a></li>
-                           <li><a class="" href="{% url 'polls.views.show2'  %}">AIR POLLUTION</a></li>
+                          <li><a class="" href="{% url 'polls.views.show2'  %}"><i>Water Pollution<i></a></li>
+                           <li><a class="" href="{% url 'polls.views.show2'  %}"><i>Air Pollution<i></a></li>
                       </ul>
                   </li>
 		   <li class="sub-menu">
                       <a href="javascript:;" class="">
                           <i class="icon_document_alt"></i>
-                          <span>FEEDBACK FORM</span>
+                          <span><i>Notifications<i></span>
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
                       <ul class="sub">
-                          <li><a class="" href="form_component.html">Water Pollution Form</a></li>                          
-                          <li><a class="" href="form_validation.html">air Pollution Form</a></li>
+                          <li><a class="" href="{% url 'polls.views.email'  %}"><i>Send<i></a></li>                          
+                          <!--<li><a class="" href="{% url 'polls.views.notifications'  %}">CHECK</a></li>-->
                       </ul>
                   </li>       
                   
